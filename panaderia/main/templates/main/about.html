@@ -1,0 +1,39 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Sobre Nosotros - Patisserie & Bollería Don Camilo{% endblock title %}
+
+{% block content %}
+<section id="about" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Sobre Nosotros</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="{% static 'main/assets/img/historia.jpg' %}" alt="Nuestra Historia" class="img-fluid rounded shadow-sm">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="mt-0">Nuestra Historia</h3>
+                <p>En Patisserie & Bollería Don Camilo, nos especializamos en ofrecer productos de panadería y bollería de la más alta calidad. Desde nuestros inicios, hemos trabajado con pasión y dedicación para brindarle lo mejor.</p>
+                <h3>Misión</h3>
+                <p>Proporcionar productos frescos y deliciosos, utilizando ingredientes de calidad y técnicas artesanales para satisfacer a nuestros clientes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about-me" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Sobre Mí</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="{% static 'main/assets/img/yo.jpg' %}" alt="Leonel Gonzalez" class="img-fluid rounded-circle shadow-sm">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="mt-0">Leonel Gonzalez</h3>
+                <p>Nací el 21 de enero de 2000. Actualmente resido en Carlos Pellegrini, Santa Fe. Soy Técnico Electromecánico y estudiante de Ingeniería Electrónica, con estudios completados hasta el tercer año.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

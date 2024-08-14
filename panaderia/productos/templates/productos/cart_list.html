@@ -1,0 +1,51 @@
+{% extends "main/base.html" %}
+
+{% block title %}Carrito de Compras{% endblock title %}
+
+{% block content %}
+<section id="cart" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Carrito de Compras</h2>
+        <div class="row">
+            {% for item in cart_items %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ item.product.name }}</h3>
+                        <p class="card-text">Precio: ${{ item.product.price }}</p>
+                        <p class="card-text">Cantidad: {{ item.quantity }}</p>
+                        <p class="card-text">Total: ${{ item.get_total_price }}</p>
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'cart-item-update' item.id %}#updateItem" class="btn btn-primary">Modificar cantidad</a>
+                            <a href="{% url 'cart-item-delete' item.id %}#deleteItem" class="btn btn-danger">Eliminar del carrito</a>
+                            <a href="{% url 'products-list' %}#productos" class="btn btn-secondary">Agregar otro producto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-md-12">
+                <div class="alert alert-info text-center" role="alert">
+                    Tu carrito está vacío.
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'products-list' %}#productos" class="btn btn-secondary">Ver productos</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if cart_items %}
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <h4>Total del carrito: ${{ total_amount }}</h4>
+                
+                <form method="post" action="{% url 'cart-list' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success mt-3">Realizar Pedido</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}

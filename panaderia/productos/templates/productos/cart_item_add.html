@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Agregar al Carrito{% endblock title %}
+
+{% block content %}
+<section id="addCart" class="py-5">
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Agregar al Carrito</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Cantidad:</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control" min="1" value="1">
+                    </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                        <a href="{% url 'products-list' %}#productos" class="btn btn-secondary">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

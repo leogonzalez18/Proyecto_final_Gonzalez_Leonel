@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Perfil{% endblock title %}
+
+{% block content %}
+    <div id="profile" class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 text-center">
+                <!-- Mostrar la imagen de avatar si existe -->
+                {% if user.avatar %}
+                    <img src="{{ user.avatar.image.url }}" alt="Avatar de {{ request.user.username }}" class="img-fluid rounded-circle mb-4" style="width: 150px; height: 150px; object-fit: cover;">
+                {% else %}
+                    <i class="fas fa-user-circle fa-2x"></i>
+                {% endif %}
+                <h2 class="mb-3">{{ request.user.username }}</h2>
+                <p class="text-muted">Perfil de usuario</p>
+            </div>
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3">Información del Usuario</h4>
+                        <p><strong>Nombre:</strong> {{ request.user.first_name }} {{ request.user.last_name }}</p>
+                        <p><strong>Email:</strong> {{ request.user.email }}</p>
+                        <a href="{% url 'edit_user' %}#editUser" class="btn btn-primary mt-3">Editar usuario</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

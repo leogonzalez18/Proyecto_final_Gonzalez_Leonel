@@ -1,0 +1,33 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Inicio de Sesión{% endblock title %}
+
+{% block content %}
+    <section id="login" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Iniciar Sesión</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="text-center mb-3">
+                        <p>{{ msg_login }}</p>
+                    </div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <table class="form-tabla-login-signup">
+                            {{ form.as_table }}
+                        </table>
+                        <div class="text-center mt-3">
+                            <input type="submit" value="Iniciar sesión" class="btn btn-primary">
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>¿No tienes cuenta? <a href="{% url 'register' %}#register">Regístrate</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

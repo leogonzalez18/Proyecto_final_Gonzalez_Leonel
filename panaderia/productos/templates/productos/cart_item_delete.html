@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Eliminar Producto del Carrito{% endblock title %}
+
+{% block content %}
+<section id="deleteItem" class="py-5">
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center text-danger mb-4">Eliminar producto del carrito</h2>
+                <p class="text-center">¿Estás seguro que deseas eliminar <strong>{{ object.product.name }}</strong> del carrito?</p>
+                <div class="d-grid gap-2 d-md-block text-center">
+                    <form method="post" class="d-inline-block">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                    <a href="{% url 'cart-list' %}#cart" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

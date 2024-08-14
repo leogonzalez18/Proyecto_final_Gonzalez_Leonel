@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Inicio - Patisserie & Bollería Don Camilo{% endblock title %}
+
+{% block content %}
+<section id="home" class="py-5 text-center" style="background-color: #000; color: #fff;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="display-4 mb-4" style="font-weight: 600;">
+                    Explora nuestras deliciosas ofertas y descubre lo mejor en panadería y bollería.
+                </h2>
+                <a href="{% url 'products-list' %}#productos" class="btn btn-primary btn-lg" style="border-radius: 0.5rem;">
+                    Ver Productos
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'main/assets/img/bienvenido.jpg' %}" alt="Panadería" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

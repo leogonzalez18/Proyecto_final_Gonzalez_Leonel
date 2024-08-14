@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block title %}Crear Cuenta{% endblock title %}
+
+{% block content %}
+    <section id="register" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Crear Cuenta</h2>
+            
+            <!-- Mensaje de Registro -->
+            {% if msg_register %}
+                <div class="alert alert-danger text-center mb-4">
+                    {{ msg_register }}
+                </div>
+            {% endif %}
+
+            <!-- Formulario de Registro -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <table class="form-tabla-login-signup">
+                            {{ form.as_table }}
+                        </table>
+                        <div class="text-center">
+                            <input type="submit" value="Registrarse" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

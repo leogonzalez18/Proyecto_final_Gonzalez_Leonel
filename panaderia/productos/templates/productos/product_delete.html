@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Eliminar Producto{% endblock title %}
+
+{% block content %}
+<section id="deleteProduct" class="py-5">
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center text-danger mb-4">Eliminar Producto</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p class="text-center">¿Está seguro de eliminar el producto <strong>"{{ product.name }}"</strong>?</p>
+                    <div class="d-grid gap-2 d-md-block text-center">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a href="{% url 'products-list' %}#productos" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
