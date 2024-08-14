@@ -103,10 +103,18 @@ class CartItemUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('cart-list')
     
     def form_valid(self, form):
-        response = super().form_valid(form)
-        cart_item = self.get_object()
-        messages.success(self.request, f'Cantidad del producto {cart_item.product.name} actualizada con éxito.')
-        return response
+        product = get_object_or_404(Product, pk=self.kwargs['pk'])
+        cart, created = Cart.objects.get_or_create(user=self.request.user)
+        cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    
+        if created:
+            cart_item.quantity = form.cleaned_data['quantity']
+        else:
+            cart_item.quantity += form.cleaned_data['quantity']
+    
+        cart_item.save()
+        messages.success(self.request, f'Producto {product.name} añadido al carrito con éxito.')
+        return redirect('cart-list')
 
 class CartItemDeleteView(LoginRequiredMixin, DeleteView):
     model = CartItem
