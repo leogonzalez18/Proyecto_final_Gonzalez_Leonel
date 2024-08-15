@@ -48,7 +48,7 @@ Ver archivo titulado "Pruebas Proyecto Final Python.xlsx" el cual se encuentra e
 
 ## Video Demostración
 
-[Incluir enlace a video demostración aquí]
+https://youtu.be/2sc93hk6L2Y
 
 ## cuenta superuser
 usuario: admin2000
